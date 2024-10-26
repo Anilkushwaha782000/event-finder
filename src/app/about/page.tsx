@@ -65,7 +65,7 @@ const workspace=[{
       setError("");
       setFormData({ name: "", email: "", message: "",subject:"" }); // Reset form
     } catch (err) {
-      setError("There was an error submitting the form.");
+      setError("There was an error submitting the form "+err);
     }
   };
 
