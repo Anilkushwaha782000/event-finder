@@ -1,6 +1,4 @@
-import { NextResponse, NextRequest } from "next/server";
-import mongoose from "mongoose";
-import User from "@/app/models/userSchema";
+import { NextResponse } from "next/server";
 import EventBooking from "@/app/models/bookingSchema";
 import { authOptions } from "../auth/[...nextauth]/route";
 import connectToDatabase from "@/app/lib/ConnectToDb";

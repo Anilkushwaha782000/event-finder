@@ -1,10 +1,10 @@
 import connectToDatabase from "@/app/lib/ConnectToDb";
 import EventBooking from "@/app/models/bookingSchema";
-import { NextResponse, NextRequest } from "next/server";
+import { NextResponse } from "next/server";
 import { authOptions } from "../auth/[...nextauth]/route";
 import { getServerSession } from "next-auth";
 connectToDatabase();
-export async function GET(request: NextRequest) {
+export async function GET() {
   await connectToDatabase();
   const session = await getServerSession(authOptions);
   try {

@@ -1,4 +1,4 @@
-import { NextResponse, NextRequest } from 'next/server';
+import { NextResponse } from 'next/server';
 export async function GET(request: Request, { params }: { params: { id: string } }) {
   const { id } = params;
   const url = `https://app.ticketmaster.com/discovery/v2/events/${id}.json?apikey=${process.env.EVENT_API_KEY}`;
