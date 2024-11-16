@@ -4,15 +4,6 @@ import { useEffect, useState } from "react";
 import { FaCalendarAlt, FaMapMarkerAlt, FaTicketAlt } from "react-icons/fa";
 import { GetServerSideProps } from "next";
 import Loader from "@/app/component/Loader";
-import {
-  AiOutlineMail,
-  AiOutlineUser,
-  AiOutlineMessage,
-  AiOutlineInstagram,
-  AiOutlineTwitter,
-  AiOutlineFacebook,
-} from "react-icons/ai";
-import Link from "next/link";
 import Footer from "@/app/component/Footer";
 const EventDetails = ({ params }: { params: { id: string } }) => {
   const eventId = params.id;

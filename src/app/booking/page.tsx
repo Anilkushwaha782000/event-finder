@@ -1,14 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import {
-  AiOutlineMail,
-  AiOutlineUser,
-  AiOutlineMessage,
-  AiOutlineInstagram,
-  AiOutlineTwitter,
-  AiOutlineFacebook,
-} from "react-icons/ai";
 import Loader from "../component/Loader";
 import Footer from "../component/Footer";
 const EventBooking = () => {

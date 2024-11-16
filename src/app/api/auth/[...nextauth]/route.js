@@ -2,9 +2,7 @@
 
 import NextAuth from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
-import GitHubProvider from "next-auth/providers/github";
 import CredentialsProvider from "next-auth/providers/credentials";
-import LinkedInProvider from "next-auth/providers/linkedin";
 import connectToDatabase from "@/app/lib/ConnectToDb";
 import User from "@/app/models/userSchema";
 import bcrypt from "bcryptjs";
