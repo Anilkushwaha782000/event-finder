@@ -1,22 +1,12 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import {
-  AiOutlineMail,
-  AiOutlineUser,
-  AiOutlineMessage,
-  AiOutlineInstagram,
-  AiOutlineTwitter,
-  AiOutlineFacebook,
-} from "react-icons/ai";
 import Loader from "../component/Loader";
 import Footer from "../component/Footer";
 const SavedEvents = () => {
   const [savedEvents, setsavedEvents] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
-  const [isModalOpen, setModalOpen] = useState(false);
-  const [eventIdToDelete, setEventIdToDelete] = useState(null);
   useEffect(() => {
     const fetchSavedEvents = async () => {
       try {
@@ -42,7 +32,9 @@ const SavedEvents = () => {
         (event) => event._id !== filterId
       );
       setsavedEvents(filteredEvents);
-    } catch (error) {}
+    } catch (error:any) {
+      setError(error);
+    }
   };
   if (loading) {
     return <Loader />;

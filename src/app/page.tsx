@@ -2,14 +2,6 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { AiOutlineSearch } from "react-icons/ai";
-import {
-  AiOutlineMail,
-  AiOutlineUser,
-  AiOutlineMessage,
-  AiOutlineInstagram,
-  AiOutlineTwitter,
-  AiOutlineFacebook,
-} from "react-icons/ai";
 import Link from "next/link";
 import Footer from "./component/Footer";
 export default function Home() {

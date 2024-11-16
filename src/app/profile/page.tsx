@@ -4,14 +4,6 @@ import React, { useEffect } from "react";
 import Loader from "../component/Loader";
 import Footer from "../component/Footer";
 import { signIn } from "next-auth/react";
-import {
-  AiOutlineMail,
-  AiOutlineUser,
-  AiOutlineMessage,
-  AiOutlineInstagram,
-  AiOutlineTwitter,
-  AiOutlineFacebook,
-} from "react-icons/ai";
 import { useSession } from "next-auth/react";
 import { signOut } from "next-auth/react";
 import { useRouter } from "next/navigation";
@@ -24,7 +16,7 @@ interface FormData {
 
 const ProfilePage = () => {
   const router = useRouter();
-  const { data: session, status,update } = useSession();
+  const { data: session } = useSession();
   const [formData, setFormData] = useState<FormData>({
     username:"",
     email: "",
@@ -93,12 +85,12 @@ const ProfilePage = () => {
       if(response.ok){
         const result = await response.json();
         if(session){
-        //
+        console.log(result);
         }
         
       }
-    } catch (error) {
-      
+    } catch (error:any) {
+      setError(error);
     }
   };
   return (

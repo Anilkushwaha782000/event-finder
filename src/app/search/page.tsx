@@ -1,7 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
-import { FaSearch, FaFilter } from "react-icons/fa";
-import Link from "next/link";
+import { FaSearch } from "react-icons/fa";
 const SearchFilterPage = () => {
   const [events, setEvents] = useState<any[]>([]);
   const [searchTerm, setSearchTerm] = useState("");
@@ -9,7 +8,6 @@ const SearchFilterPage = () => {
     category: 'sports',
     location: "",
   });
-  const [page, setPage] = useState(1);
   const itemsPerPage = 10;
   const [loading, setLoading] = useState(true);
   const [feedbackMessage, setFeedbackMessage] = useState("");
@@ -29,7 +27,7 @@ const SearchFilterPage = () => {
           setFeedbackMessage('')
         },3000)
       } catch (error) {
-        setFeedbackMessage("Error loading events.");
+        setFeedbackMessage("Error loading events."+error);
       } finally {
         setLoading(false);
       }
@@ -56,11 +54,6 @@ const SearchFilterPage = () => {
     });
     setFeedbackMessage("Filters reset. All events loaded.");
   };
-
-  const paginatedEvents = events?.slice(
-    (page - 1) * itemsPerPage,
-    page * itemsPerPage
-  );
   const uniqueLocations = Array.from(
     new Set(
       events.map((event) => {
