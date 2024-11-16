@@ -1,14 +1,14 @@
-"use client"
+"use client";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { AiOutlineSearch } from "react-icons/ai";
 import Link from "next/link";
 import Footer from "./component/Footer";
+import Loader from "./component/Loader";
 export default function Home() {
   const [events, setEvents] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
-  const router=useRouter()
+  const router = useRouter();
   useEffect(() => {
     const fetchEvents = async () => {
       try {
@@ -19,17 +19,19 @@ export default function Home() {
         } = data;
         setEvents(events);
         setLoading(false);
-      } catch (err) {
-        console.error("Error fetching events:", err);
-        setError("Failed to load events.");
+      } catch (err: any) {
+        setError("Failed to load events." + err);
         setLoading(false);
       }
     };
 
     fetchEvents();
   }, []);
-  const handleCategory=(category:string)=>{
+  const handleCategory = (category: string) => {
     router.push(`/classification/${category}`);
+  };
+  if (loading) {
+    <Loader />;
   }
   return (
     <div className="bg-gray-50 min-h-screen">
@@ -46,12 +48,14 @@ export default function Home() {
           {/* Search Bar */}
           <div className="flex justify-center">
             <div className="relative w-2/3 md:w-1/2">
-            <span className="font-bold text-lg text-white">Join the Fun—Discover Vibrant Local Events!</span>
+              <span className="font-bold text-lg text-white">
+                Join the Fun—Discover Vibrant Local Events!
+              </span>
             </div>
           </div>
         </div>
       </header>
-
+      {error && <p className="text-red-600 mt-4 mb-4">{error}</p>}
       {/* Event Categories */}
       <section className="py-12 bg-white">
         <div className="container mx-auto px-4">
@@ -59,18 +63,17 @@ export default function Home() {
             Explore Popular Categories
           </h2>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-            {[
-              "Music",
-              "Sports",
-              "Arts",
-              "Food",
-              "Family",
-            ].map((category) => (
+            {["Music", "Sports", "Arts", "Food", "Family"].map((category) => (
               <div
                 key={category}
                 className="bg-blue-100 p-4 rounded-lg text-center hover:bg-blue-200"
               >
-                <button className="text-lg font-medium w-full" onClick={()=>handleCategory(category)}>{category}</button>
+                <button
+                  className="text-lg font-medium w-full"
+                  onClick={() => handleCategory(category)}
+                >
+                  {category}
+                </button>
               </div>
             ))}
           </div>
@@ -85,28 +88,32 @@ export default function Home() {
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {/* Example Events */}
-            {events.slice(0,4)
-              .map((item,index) => (
-                <div
-                  key={index}
-                  className="bg-white shadow-lg rounded-lg overflow-hidden"
-                >
-                  <img
-                    src={item.images[0].url}
-                    alt={`Event ${index + 1}`}
-                    className="w-full h-48 object-cover"
-                  />
-                  <div className="p-4">
-                    <h3 className="text-xl font-semibold mb-2">
-                      Event Title {item.name}
-                    </h3>
-                    <p className="text-gray-700 mb-4">{new Date(item.dates.start.dateTime).toLocaleDateString()}</p>
-                    <a href={`/event/${item.id}`} className="text-pink-600 font-medium hover:underline">
-                      View Details
-                    </a>
-                  </div>
+            {events.slice(0, 4).map((item, index) => (
+              <div
+                key={index}
+                className="bg-white shadow-lg rounded-lg overflow-hidden"
+              >
+                <img
+                  src={item.images[0].url}
+                  alt={`Event ${index + 1}`}
+                  className="w-full h-48 object-cover"
+                />
+                <div className="p-4">
+                  <h3 className="text-xl font-semibold mb-2">
+                    Event Title {item.name}
+                  </h3>
+                  <p className="text-gray-700 mb-4">
+                    {new Date(item.dates.start.dateTime).toLocaleDateString()}
+                  </p>
+                  <a
+                    href={`/event/${item.id}`}
+                    className="text-pink-600 font-medium hover:underline"
+                  >
+                    View Details
+                  </a>
                 </div>
-              ))}
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -114,28 +121,32 @@ export default function Home() {
         <div className="container mx-auto px-4">
           <h2 className="text-2xl font-semibold mb-6">Featured Events</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {events.slice(4,10)
-              .map((item,index) => (
-                <div
-                  key={index}
-                  className="bg-white shadow-lg rounded-lg overflow-hidden"
-                >
-                  <img
-                    src={item.images[0].url}
-                    alt={`Featured Event ${index + 1}`}
-                    className="w-full h-48 object-cover"
-                  />
-                  <div className="p-4">
-                    <h3 className="text-xl font-semibold mb-2">
-                      Featured Event {item.name}
-                    </h3>
-                    <p className="text-gray-700 mb-4">{new Date(item.dates.start.dateTime).toLocaleDateString()}</p>
-                    <a href={`/event/${item.id}`} className="text-pink-600 font-medium hover:underline">
-                      View Details
-                    </a>
-                  </div>
+            {events.slice(4, 10).map((item, index) => (
+              <div
+                key={index}
+                className="bg-white shadow-lg rounded-lg overflow-hidden"
+              >
+                <img
+                  src={item.images[0].url}
+                  alt={`Featured Event ${index + 1}`}
+                  className="w-full h-48 object-cover"
+                />
+                <div className="p-4">
+                  <h3 className="text-xl font-semibold mb-2">
+                    Featured Event {item.name}
+                  </h3>
+                  <p className="text-gray-700 mb-4">
+                    {new Date(item.dates.start.dateTime).toLocaleDateString()}
+                  </p>
+                  <a
+                    href={`/event/${item.id}`}
+                    className="text-pink-600 font-medium hover:underline"
+                  >
+                    View Details
+                  </a>
                 </div>
-              ))}
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -144,13 +155,16 @@ export default function Home() {
           <h3 className="text-2xl font-semibold mb-4">
             Sign up for personalized event recommendations!
           </h3>
-          <Link href={'/auth'} className="bg-pink-600 text-white font-semibold py-4 px-8 rounded-lg hover:bg-pink-700">
+          <Link
+            href={"/auth"}
+            className="bg-pink-600 text-white font-semibold py-4 px-8 rounded-lg hover:bg-pink-700"
+          >
             Create an Account
           </Link>
         </div>
       </section>
 
-      <Footer/>
+      <Footer />
     </div>
   );
 }

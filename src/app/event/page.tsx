@@ -2,7 +2,6 @@
 import React,{useEffect, useState}  from "react";
 import Loader from "../component/Loader";
 import Link from "next/link";
-import Footer from "../component/Footer";
  const EventPage = () => {
  const [event, setEvents] = useState<any[]>([]);
  const [loading, setLoading] = useState(true); 

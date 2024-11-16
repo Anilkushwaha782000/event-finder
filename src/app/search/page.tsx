@@ -8,7 +8,6 @@ const SearchFilterPage = () => {
     category: 'sports',
     location: "",
   });
-  const itemsPerPage = 10;
   const [loading, setLoading] = useState(true);
   const [feedbackMessage, setFeedbackMessage] = useState("");
 
@@ -26,7 +25,7 @@ const SearchFilterPage = () => {
         setTimeout(()=>{
           setFeedbackMessage('')
         },3000)
-      } catch (error) {
+      } catch (error:any) {
         setFeedbackMessage("Error loading events."+error);
       } finally {
         setLoading(false);

@@ -3,7 +3,6 @@ import { useState, ChangeEvent, FormEvent } from "react";
 import React, { useEffect } from "react";
 import Loader from "../component/Loader";
 import Footer from "../component/Footer";
-import { signIn } from "next-auth/react";
 import { useSession } from "next-auth/react";
 import { signOut } from "next-auth/react";
 import { useRouter } from "next/navigation";
@@ -41,7 +40,7 @@ const ProfilePage = () => {
         const data = await res.json();
         setsavedEvents(data);
         setLoading(false);
-      } catch (err) {
+      } catch (err:any) {
         console.error("Error fetching events:", err);
         setError("Failed to load events.");
         setLoading(false);
@@ -188,7 +187,9 @@ const ProfilePage = () => {
           Logout
         </button>
       </div>
-
+      {error &&(
+        <p className="text-red-600">{error}</p>
+      )}
       {/* Past Activity Section */}
       <section className="container mx-auto mt-16 mb-6 max-w-4xl bg-white p-8 shadow-lg rounded-lg">
         <h2 className="text-3xl font-bold text-pink-600 mb-4">Past Activity</h2>

@@ -49,6 +49,7 @@ const SavedEvents = () => {
       </header>
       <div className="max-w-7xl flex-grow py-10 px-4 mx-6 justify-items-center">
         <div className="grid gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+        {error && <p className="text-red-600 mt-4 mb-4">{error}</p>}
           {savedEvents.length > 0 ? (
             savedEvents.map((event) => (
               <div
