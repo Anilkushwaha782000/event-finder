@@ -19,8 +19,12 @@ export default function Home() {
         } = data;
         setEvents(events);
         setLoading(false);
-      } catch (err: any) {
-        setError("Failed to load events." + err);
+      }catch (err: unknown) {
+        if (err instanceof Error) {
+          setError("Failed to load events: " + err.message);
+        } else {
+          setError("Failed to load events: An unknown error occurred at client side.");
+        }
         setLoading(false);
       }
     };

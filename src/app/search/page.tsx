@@ -25,8 +25,12 @@ const SearchFilterPage = () => {
         setTimeout(()=>{
           setFeedbackMessage('')
         },3000)
-      } catch (error:any) {
-        setFeedbackMessage("Error loading events."+error);
+      } catch (error: unknown) {
+        if (error instanceof Error) {
+          setFeedbackMessage(`Error loading events: ${error.message}`);
+        } else {
+          setFeedbackMessage("Error loading events: An unknown error occurred.");
+        }
       } finally {
         setLoading(false);
       }

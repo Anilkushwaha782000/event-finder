@@ -32,8 +32,13 @@ const SavedEvents = () => {
         (event) => event._id !== filterId
       );
       setsavedEvents(filteredEvents);
-    } catch (error:any) {
-      setError(error);
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        setError("Failed to set events: " + err.message);
+      } else {
+        setError("Failed to set events: An unknown error occurred in client side.");
+      }
+      setLoading(false);
     }
   };
   if (loading) {

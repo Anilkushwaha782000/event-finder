@@ -88,8 +88,12 @@ const ProfilePage = () => {
         }
         
       }
-    } catch (error:any) {
-      setError(error);
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        setError(error.message);  
+      } else {
+        setError("An unknown error occurred at client side.");
+      }
     }
   };
   return (
