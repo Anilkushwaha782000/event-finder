@@ -1,9 +1,6 @@
 "use client"
 import React from 'react'
 import {
-    AiOutlineMail,
-    AiOutlineUser,
-    AiOutlineMessage,
     AiOutlineInstagram,
     AiOutlineTwitter,
     AiOutlineFacebook,

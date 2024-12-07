@@ -44,13 +44,14 @@ export const authOptions = {
           return user;
         } catch (error) {
           throw new Error("Internal server error");
+          console.log("error is coming during authntication..",error);
         }
       },
     }),
   ],
   secret: process.env.NEXTAUTH_SECRET,
   callbacks: {
-    async signIn({ user, account, profile }) {
+    async signIn({ user }) {
       await connectToDatabase();
       const username=user.name
       const email=user.email

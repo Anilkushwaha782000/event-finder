@@ -8,7 +8,7 @@ import { useRouter } from "next/navigation";
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isProfileOpen, setIsProfileOpen] = useState(false);
-  const { data: session, status } = useSession();
+  const { data: session } = useSession();
   const router = useRouter();
   const toggleMenu = () => {
     setIsOpen(!isOpen);

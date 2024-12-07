@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import Footer from "../component/Footer";
-import { AiOutlineMail, AiOutlineUser, AiOutlineMessage, AiOutlineInstagram, AiOutlineTwitter, AiOutlineFacebook } from "react-icons/ai";
+import { AiOutlineMail, AiOutlineUser, AiOutlineMessage } from "react-icons/ai";
 interface FormData {
   name: string;
   email: string;

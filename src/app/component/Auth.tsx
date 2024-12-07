@@ -2,9 +2,7 @@
 import { useState } from "react";
 import { signIn } from "next-auth/react";
 import {
-  AiOutlineGoogle,
-  AiOutlineGithub,
-  AiOutlineLinkedin,
+  AiOutlineGoogle
 } from "react-icons/ai";
 import { useRouter } from "next/navigation";
 

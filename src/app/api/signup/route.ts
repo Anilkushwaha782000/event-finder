@@ -26,7 +26,11 @@ export async function POST(request: NextRequest) {
      else{
         return NextResponse.json({ message: 'There is an error while saving event' }, { status: 403 });
      }
-    } catch (error:any) {
-      return NextResponse.json({ message: 'Failed to save event '+error.message }, { status: 500 });
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        return NextResponse.json({ message: 'Failed to save event ' + error.message }, { status: 500 });
+      } else {
+        return NextResponse.json({ message: 'Failed to save event ' }, { status: 500 });
+      }
     }
   }
