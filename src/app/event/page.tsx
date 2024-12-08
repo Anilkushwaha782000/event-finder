@@ -2,8 +2,14 @@
 import React,{useEffect, useState}  from "react";
 import Loader from "../component/Loader";
 import Link from "next/link";
+interface Event {
+  id: string;
+  name: string;
+  date: string;
+  [key: string]: any; 
+}
  const EventPage = () => {
- const [event, setEvents] = useState<Record<string, any>[]>([]);
+ const [event, setEvents] = useState<Event[]>([]);
  const [loading, setLoading] = useState(true); 
  const [error, setError] = useState("");
  const [currentPage, setCurrentPage] = useState(1);

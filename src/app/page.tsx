@@ -4,8 +4,14 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import Footer from "./component/Footer";
 import Loader from "./component/Loader";
+interface Event {
+  id: string;
+  name: string;
+  date: string;
+  [key: string]: any; 
+}
 export default function Home() {
-  const [events, setEvents] = useState<Record<string, any>[]>([]);
+  const [events, setEvents] = useState<Event[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const router = useRouter();
@@ -17,6 +23,7 @@ export default function Home() {
         const {
           _embedded: { events },
         } = data;
+        console.log("events app",events);
         setEvents(events);
         setLoading(false);
       }catch (err: unknown) {

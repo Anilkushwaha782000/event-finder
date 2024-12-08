@@ -3,8 +3,14 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Loader from "../component/Loader";
 import Footer from "../component/Footer";
+interface Event {
+  id: string;
+  name: string;
+  date: string;
+  [key: string]: any; 
+}
 const SavedEvents = () => {
-  const [savedEvents, setsavedEvents] = useState<Record<string, any>[]>([]);
+  const [savedEvents, setsavedEvents] = useState<Event[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   useEffect(() => {

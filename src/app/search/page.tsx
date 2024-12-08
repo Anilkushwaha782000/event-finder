@@ -1,8 +1,14 @@
 "use client";
 import { useState, useEffect } from "react";
 import { FaSearch } from "react-icons/fa";
+interface Event {
+  id: string;
+  name: string;
+  date: string;
+  [key: string]: any;
+}
 const SearchFilterPage = () => {
-  const [events, setEvents] = useState<Record<string, any>[]>([]);
+  const [events, setEvents] = useState<Event[]>([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [filters, setFilters] = useState({
     category: 'sports',

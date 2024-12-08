@@ -12,7 +12,12 @@ interface FormData {
   preferences: string;
   notifications: boolean;
 }
-
+interface Event {
+  id: string;
+  name: string;
+  date: string;
+  [key: string]: any; 
+}
 const ProfilePage = () => {
   const router = useRouter();
   const { data: session } = useSession();
@@ -24,7 +29,7 @@ const ProfilePage = () => {
   });
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
-  const [savedEvents, setsavedEvents] = useState<any[]>([]);
+  const [savedEvents, setsavedEvents] = useState<Event[]>([]);
   useEffect(() => {
     if (session) {
       setFormData({
