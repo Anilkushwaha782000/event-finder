@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import { FaSearch } from "react-icons/fa";
 const SearchFilterPage = () => {
-  const [events, setEvents] = useState<any[]>([]);
+  const [events, setEvents] = useState<Record<string, any>[]>([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [filters, setFilters] = useState({
     category: 'sports',

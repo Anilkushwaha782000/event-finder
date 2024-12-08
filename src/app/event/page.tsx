@@ -3,7 +3,7 @@ import React,{useEffect, useState}  from "react";
 import Loader from "../component/Loader";
 import Link from "next/link";
  const EventPage = () => {
- const [event, setEvents] = useState<any[]>([]);
+ const [event, setEvents] = useState<Record<string, any>[]>([]);
  const [loading, setLoading] = useState(true); 
  const [error, setError] = useState("");
  const [currentPage, setCurrentPage] = useState(1);

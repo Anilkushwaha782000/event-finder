@@ -5,7 +5,7 @@ import Link from "next/link";
 import Footer from "./component/Footer";
 import Loader from "./component/Loader";
 export default function Home() {
-  const [events, setEvents] = useState<any[]>([]);
+  const [events, setEvents] = useState<Record<string, any>[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const router = useRouter();

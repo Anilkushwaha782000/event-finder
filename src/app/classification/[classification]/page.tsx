@@ -6,7 +6,7 @@ import Image from 'next/image';
 
 function Page({ params }: { params: { classification: string } }) {
   const router = useRouter();
-  const [events, setEvents] = useState<any[]>([]);
+  const [events, setEvents] = useState<Record<string, any>[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const classification = params.classification;
@@ -24,8 +24,6 @@ function Page({ params }: { params: { classification: string } }) {
       const response = await fetch(`/api/classification?classification=${classification}`);
       const data = await response.json();
       const {_embedded:{events}}=data
-      console.log("dataa>>",data)
-      console.log("events>>",events)
       if (response.ok) {
         setEvents(events);
       } else {

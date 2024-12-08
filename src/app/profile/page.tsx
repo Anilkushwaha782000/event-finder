@@ -40,9 +40,13 @@ const ProfilePage = () => {
         const data = await res.json();
         setsavedEvents(data);
         setLoading(false);
-      } catch (err:any) {
+      } catch (err: unknown) {
         console.error("Error fetching events:", err);
-        setError("Failed to load events.");
+        if (err instanceof Error) {
+          setError(`Failed to load events: ${err.message}`);
+        } else {
+          setError("Failed to load events.");
+        }
         setLoading(false);
       }
     };

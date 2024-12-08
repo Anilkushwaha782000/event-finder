@@ -4,7 +4,7 @@ import Link from "next/link";
 import Loader from "../component/Loader";
 import Footer from "../component/Footer";
 const SavedEvents = () => {
-  const [savedEvents, setsavedEvents] = useState<any[]>([]);
+  const [savedEvents, setsavedEvents] = useState<Record<string, any>[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   useEffect(() => {

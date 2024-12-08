@@ -8,9 +8,8 @@ import Footer from "@/app/component/Footer";
 const EventDetails = ({ params }: { params: { id: string } }) => {
   const eventId = params.id;
   const router = useRouter();
-  const [events, setEvents] = useState<any[]>([]);
+  const [events, setEvents] = useState<Record<string, any>[]>([]);
   const [loading, setLoading] = useState(true);
-  const [eventData, setEventData] = useState<any>(null);
   const [error, setError] = useState("");
   useEffect(() => {
     const fetchEvents = async () => {
