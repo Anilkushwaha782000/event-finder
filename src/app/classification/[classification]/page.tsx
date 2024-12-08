@@ -1,6 +1,5 @@
 "use client";
 import React, { useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
 import Loader from '@/app/component/Loader';
 
 function Page({ params }: { params: { classification: string } }) {
@@ -47,7 +46,7 @@ function Page({ params }: { params: { classification: string } }) {
           Join us for the most exciting {classification.toLowerCase()} events in your area!
         </p>
       </header>
-      {error && <p className="text-red-500 text-center mb-4">{error}</p>}
+      {error && <p className="text-red-500 text-center mb-4 mt-4">{error}</p>}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {events
               .map((item,index) => (

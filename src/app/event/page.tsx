@@ -69,7 +69,7 @@ import Link from "next/link";
           </Link>
         </div>
       </header>
-
+   
       {/* Event Details Section */}
       <section className="py-12">
         <div className="container mx-auto text-center">
@@ -121,11 +121,14 @@ import Link from "next/link";
           </div>
         </div>
       </section>
-
+        
       {/* Upcoming Events List Section */}
       <section className="py-12 bg-gray-100">
         <div className="container mx-auto text-center">
           <h2 className="text-4xl font-bold text-pink-600 mb-6">Upcoming Events</h2>
+          {error &&(
+            <p className="text-red-500 mt-4 mb-4">{error}</p>
+          )}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {currentEvents.map(event => {
               const venue = event._embedded.venues[0];

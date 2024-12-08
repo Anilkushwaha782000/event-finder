@@ -78,6 +78,7 @@ const EventBooking = () => {
 
       if (response.ok) {
         const result = await response.json();
+        console.log("booking result",result);
         setFormData({
           name: "",
           email: "",
@@ -131,6 +132,9 @@ const EventBooking = () => {
       </header>
 
       {/* Booking Form Section */}
+      {error && (
+        <p className="text-red mb-4 mt-4">{error}</p>
+      )}
       <div className="container mx-auto mt-10 max-w-4xl bg-white p-8 shadow-lg rounded-lg flex-grow">
         <h2 className="text-3xl font-bold text-pink-600 mb-8 text-center">
           Event Booking Form
