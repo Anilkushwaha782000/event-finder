@@ -61,7 +61,7 @@ export const authOptions = {
           name: username,
           email: email,
         });
-        const user= await newUser.save();
+        await newUser.save();
       }
       return true;
     },
