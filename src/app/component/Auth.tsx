@@ -33,6 +33,7 @@ const AuthPage: React.FC = () => {
       });
       if (response.ok) {
         const result = await response.json();
+        console.log("result>>",result);
         setIsSignUp(false);
       }
     } else {
@@ -135,7 +136,7 @@ const AuthPage: React.FC = () => {
             </p>
           ) : (
             <p className="text-gray-600">
-              Don't have an account?{" "}
+              Don&apos;t have an account?
               <button
                 onClick={() => setIsSignUp(true)}
                 className="text-pink-600 font-semibold hover:underline"

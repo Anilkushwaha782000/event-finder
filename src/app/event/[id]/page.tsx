@@ -2,7 +2,6 @@
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { FaCalendarAlt, FaMapMarkerAlt, FaTicketAlt } from "react-icons/fa";
-import { GetServerSideProps } from "next";
 import Loader from "@/app/component/Loader";
 import Footer from "@/app/component/Footer";
 const EventDetails = ({ params }: { params: { id: string } }) => {
@@ -18,15 +17,19 @@ const EventDetails = ({ params }: { params: { id: string } }) => {
         const data = await res.json();
         setEvents([data]);
         setLoading(false);
-      } catch (err) {
-        setError("Failed to load events.");
+      } catch (err: unknown) {
+        if (err instanceof Error) {
+          setError("Failed to load events."+err.message);
+        } else {
+          console.error("Unexpected error:", err);
+        }
         setLoading(false);
       }
     };
 
     fetchEvents();
   }, []);
-  if (events.length === 0) {
+  if (events.length === 0 ||loading ) {
     return <Loader />;
   }
   const handleBooking = () => {
@@ -34,16 +37,16 @@ const EventDetails = ({ params }: { params: { id: string } }) => {
   };
   return (
     <div className="flex flex-col min-h-screen bg-pink-50">
+      {error &&(
+        <p className="text-red-600 mb-4 mt-4">{error}</p>
+      )}
       <div>
         {events.map((item) => {
           const time = item.dates.start.dateTime;
           const dateAndTime = new Date(time).toLocaleString();
           const venue = item._embedded.venues[0];
           const {
-            name: venueName = "Unknown Venue",
             address: { line1 = "No address provided" } = {},
-            city = "Unknown city",
-            state = "Unknown state",
             country = "Unknown country",
             generalInfo: {
               generalRule = "No general rule",
