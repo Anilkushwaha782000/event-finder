@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import EventBooking from "@/app/models/bookingSchema";
-import { authOptions } from "../auth/[...nextauth]/route";
+import { authOptions } from "@/app/lib/authOption";
 import connectToDatabase from "@/app/lib/ConnectToDb";
 import { getServerSession } from "next-auth";
 export async function GET(request: Request) {
