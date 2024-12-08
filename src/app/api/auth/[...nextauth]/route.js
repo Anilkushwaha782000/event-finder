@@ -10,7 +10,7 @@ import bcrypt from "bcryptjs";
 // Connect to the database
 connectToDatabase();
 
-export const authOptions = {
+const authOptions = {
   providers: [
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID,
@@ -88,5 +88,5 @@ export const authOptions = {
 };
 
 const handler = NextAuth(authOptions);
-
+export { authOptions }; 
 export { handler as GET, handler as POST };
