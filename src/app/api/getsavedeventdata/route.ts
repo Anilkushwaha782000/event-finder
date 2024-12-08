@@ -1,7 +1,7 @@
 import connectToDatabase from "@/app/lib/ConnectToDb";
 import EventBooking from "@/app/models/bookingSchema";
 import { NextResponse } from "next/server";
-import { authOptions } from "../auth/[...nextauth]/route";
+import { authOptions } from "@/app/lib/authOption";
 import { getServerSession } from "next-auth";
 connectToDatabase();
 export async function GET() {
