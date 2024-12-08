@@ -8,7 +8,6 @@ const EventBooking = () => {
   const router = useRouter();
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
-  const [selectedEventId, setSelectedEventId] = useState<string>("");
   const[category,setCategory]=useState('food');
   const [formData, setFormData] = useState({
     name: "",
@@ -54,7 +53,6 @@ const EventBooking = () => {
     if (name == "event") {
       const selectedEvent = events.find((event) => event.name === value);
       if (selectedEvent) {
-        setSelectedEventId(selectedEvent.id);
         setFormData({
           ...formData,
           event: selectedEvent.name,

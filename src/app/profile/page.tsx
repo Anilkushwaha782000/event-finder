@@ -28,8 +28,8 @@ const ProfilePage = () => {
   useEffect(() => {
     if (session) {
       setFormData({
-        username: session?.user?.name!,
-        email: session?.user?.email!,
+        username: session?.user?.name??'unknown',
+        email: session?.user?.email??'unknown@gmail.com',
         preferences: "",
         notifications: true,
       });

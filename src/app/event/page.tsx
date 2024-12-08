@@ -129,7 +129,7 @@ import Link from "next/link";
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {currentEvents.map(event => {
               const venue = event._embedded.venues[0];
-              const { name: venueName, address, city, state, country } = venue;
+              const { address, city, state, country } = venue;
 
               return (
                 <div key={event.id} className="bg-white p-6 rounded-lg shadow-lg">
@@ -175,7 +175,7 @@ import Link from "next/link";
         <div className="container mx-auto text-center">
           <h2 className="text-4xl font-bold mb-6">Ready to Join Us?</h2>
           <p className="text-lg mb-8">
-            Don't miss out on the opportunity to be a part of this groundbreaking event. Register today!
+            Don&apos;t miss out on the opportunity to be a part of this groundbreaking event. Register today!
           </p>
           <a href="/auth" className="bg-white text-pink-600 px-6 py-3 rounded-full font-semibold hover:bg-gray-100 transition">
             Register Now

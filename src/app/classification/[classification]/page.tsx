@@ -2,10 +2,8 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Loader from '@/app/component/Loader';
-import Image from 'next/image';
 
 function Page({ params }: { params: { classification: string } }) {
-  const router = useRouter();
   const [events, setEvents] = useState<Record<string, any>[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
