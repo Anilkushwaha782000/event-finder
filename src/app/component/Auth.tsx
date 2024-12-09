@@ -38,16 +38,12 @@ const AuthPage: React.FC = () => {
       }
     } else {
      const result= await signIn("credentials", {
-        redirect: false,
-        callbackUrl: "/dashboard",
+        redirect: true,
+        callbackUrl: "/profile",
         email: email,
         password: password,
       });
-      if (result?.ok) {
-        router.push("/profile");
-      } else {
-        console.error("Login failed: ", result?.error);
-      }
+      console.log("auth result>>",result);
     }
     setLoading(false);
   };
