@@ -4,11 +4,8 @@ import { signIn } from "next-auth/react";
 import {
   AiOutlineGoogle
 } from "react-icons/ai";
-import { useRouter } from "next/navigation";
-
 const AuthPage: React.FC = () => {
   const [isSignUp, setIsSignUp] = useState(false);
-  const router = useRouter();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
